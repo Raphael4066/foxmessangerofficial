@@ -1,19 +1,20 @@
 {
-  "private": true,
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "next": "latest",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
-    "@types/node": "^17.0.43",
-    "@types/react": "^18.0.12",
-    "@types/react-dom": "^18.0.5",
-    "typescript": "^4.7.3"
+    "@types/node": "^18.0.6",
+    "express": "^4.18.2",
+    "node-fetch": "^3.2.6",
+    "socket.io": "^4.5.2",
+    "uuid": "^9.0.0",
+    "ws": "^8.9.0"
   }
 }
