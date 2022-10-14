@@ -1,0 +1,75 @@
+<html><head>
+<link href="style.css" rel="stylesheet" type="text/css">
+
+    <title>FoxMessanger</title>
+    <meta name="description" content="FoxMessanger by FoxTech"></head><body>.
+    <meta name="viewport" content="width=device-width, initial-scale=0">
+ 
+  
+	<style>  
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #b5b5b5; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+	      body {	position: absolute;
+background: #2e2e2e; margin: 0; padding-bottom: 3rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-color:#ffffff; }
+	      #input { text-align:left;background: #5a5a5a;left: 600px;     bottom: 108px;	border: none;  flex-grow: 1; border-radius: 2rem; margin: 0.25rem; width: 200px; }
+          #form { background: rgba(0, 0, 0, 0.15); padding: 0.25rem; position: fixed; bottom: -15; left: 200; right: 200; display: flex; height: 3rem; box-sizing: border-box; backdrop-filter: blur(10px); }
+      .lefts { background:#222222; height:1500px; width:200px;bottom: 0px;      position: fixed;}
+      .lefts1 { background:#222222; height:1500px; width:200px;bottom: 0px; left: 1545;      position: fixed;}
+      #form > button {font-color:#ffffff; background: #333;  border: none; padding: 0 1rem; margin: 0.25rem; border-radius: 3px; outline: none; color: #fff; }
+      #messages > li { color:#ffffff;     left: 200px; position: relative; list-style-type: none; /* Убираем маркеры */ }
+   li:before {
+    content: user; /* Добавляем в качестве маркера символ */
+   }     
+	</style>
+      <div class="lefts"></div>
+      <div class="lefts1"></div>
+      <ul id="messages" scrolling=yes></ul> 
+        <form id="form" action="">
+              <input placeholder="  Написать в #чат" id="input" autocomplete="off"><button>Отправить</button></form>
+
+          
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+      var socket = io();
+      var messages = document.getElementById('messages');
+      var form = document.getElementById('form');
+      var input = document.getElementById('input');
+      var user = "test"
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (input.value) {
+          socket.emit('chat message', input.value);          
+          input.value = " ";
+        }
+      });
+
+      socket.on('chat message', function(msg) {
+        var item = document.createElement('li');
+        item.textContent = msg;
+        messages.appendChild(item);
+        window.scrollTo(0, document.body.scrollHeight);
+      });    
+    </script>
+  <div id="element">
+      <div class="overflow"></div>
+  </div>
+  
+</body></html>
